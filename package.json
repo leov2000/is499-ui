@@ -1,0 +1,24 @@
+{
+  "name": "is499-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development parcel src/index.html --open --out-dir ../is499-backend/static --out-file index.html",
+    "watch": "parcel watch src/index.html --out-dir ../is499-backend/static --out-file index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "date-fns": "^2.8.1",
+    "lodash": "^4.17.15",
+    "parcel-bundler": "^1.12.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
+  }
+}
