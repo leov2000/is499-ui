@@ -1,41 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { AgGridReact } from 'ag-grid-react';
 import axios from "axios";
-import { columnHeaders } from "../config";
+import "../assets/style.less";
 
-function Grid() {
+function Grid(props) {
+  const { columns, endPoint, header } = props;
   const [row, setRows] = useState([]);
 
   const getRows = () => {
     axios
-    .get("/bully")
-    .then((res) => {
-      const { data }  = res;
+      .get(endPoint)
+      .then((res) => {
+        const { data } = res;
 
-      setRows(data);
-    })
-   };
-   
+        setRows(data);
+      })
+  };
+
   useEffect(() => {
     getRows();
   }, []);
 
-
   return (
-    <div className="ag-theme-alpine" style={ { height: "600px", width: "1000px" } }>
-      <AgGridReact
-        rowData={row}
-        columnDefs={columnHeaders}
-        domLayout="domLayout"
-        defaultColDef={
-          {
-            filter: true,
-            sortable: true,
-            resizable: true,
-            floatingFilter: true,
-          }
-        }
-      />
+    <div className="grid">
+      <h1>{ header }</h1>
+        <div className="ag-theme-alpine" style={ { height: "600px", width: "1200px" } }>
+          <AgGridReact
+            rowData={row}
+            columnDefs={columns}
+            domLayout="domLayout"
+            defaultColDef={
+              {
+                filter: true,
+                sortable: true,
+                resizable: true,
+                floatingFilter: true,
+              }
+            }
+          />
+        </div>
     </div>
   );
 }
